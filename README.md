@@ -1,4 +1,3 @@
-# qa_python
 test_add_new_book_add_two_books  -  Проверка, что метод `add_new_book` корректно добавляет книги в коллекцию  
 test_add_new_book_length_rules  -  Проверка правил добавления книги по длине названия  
 test_set_book_genre_success  -  Проверка установки жанра для существующей книги 
