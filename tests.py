@@ -24,22 +24,18 @@ class TestBooksCollector:
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
-    @pytest.mark.parametrize("name,should_add", [
-        ("", False),
-        ("A", True),
-        ("X" * 40, True),
-        ("Y" * 41, False),
+    @pytest.mark.parametrize("name,delta", [
+    ("", 0),
+    ("A", 1),
+    ("X" * 40, 1),
+    ("Y" * 41, 0),
     ])
-    def test_add_new_book_length_rules(self, name, should_add):
-        # Отдельный экземпляр для каждого прохода теста — так тесты независимы
+    def test_add_new_book_length_rules(self, name, delta):
         collector = BooksCollector()
-
         initial_count = len(collector.books_genre)
         collector.add_new_book(name)
+        assert len(collector.books_genre) == initial_count + delta
 
-        # Один assert: проверяем, что изменение количества книг соответствует ожиданию
-        expected_count = initial_count + 1 if should_add else initial_count
-        assert len(collector.books_genre) == expected_count
 
 
     def test_set_book_genre_success(self):
